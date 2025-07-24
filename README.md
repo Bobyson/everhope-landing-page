@@ -24,7 +24,7 @@ This is the landing page for Everhope that I recreated as my take home assignmen
 
 ## 📚 Tech Stack
 
-- **Framework**: Next.js 14
+- **Framework**: Next.js 15
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: Custom components with shadcn/ui integration
