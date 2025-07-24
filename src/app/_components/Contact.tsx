@@ -1,9 +1,9 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
-import { Button } from "./ui/button";
 
 export function Contact() {
   return (
-    <section className="w-full py-12 md:py-24 bg-[#ce0135] text-white">
+    <section className="hidden sm:block w-full py-12 md:py-24 bg-[#ce0135] text-white">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="lg:w-2/3">
