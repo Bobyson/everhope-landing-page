@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the landing page for Everhope that i recreated as my take home assignment.
 
-## Getting Started
+📝 Development Notes
+Time Constraints
+Limited to weekend/evening development due to day job commitments
 
-First, run the development server:
+Prioritized core functionality over pixel-perfect design details
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Focused on responsive behavior and component reusability
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Design Decisions
+Chose flexibility over exact matching to create reusable components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Implemented mobile-first approach for better responsive experience
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Used Tailwind utilities for rapid development and consistency
 
-## Learn More
+Code Quality
+TypeScript throughout for better development experience
 
-To learn more about Next.js, take a look at the following resources:
+Component composition for maintainability
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Consistent naming conventions and file structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📚 Tech Stack
+Framework: Next.js 14
 
-## Deploy on Vercel
+Language: TypeScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Styling: Tailwind CSS
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+UI Components: Custom components with shadcn/ui integration
+
+Icons: Heroicons & custom SVGs
+
+Images: Next.js Image component
+
+Note: This project represents a best-effort implementation within limited time constraints. While striving for design accuracy, priority was given to functionality, responsiveness, and code quality over pixel-perfect visual matching.
