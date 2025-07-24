@@ -1,25 +1,27 @@
-import { 
-  Header, 
-  HeroSection, 
-  Features, 
-  TreatmentJourneyAccordion, 
-  Testimonials, 
-  Team, 
-  StandardOfCare, 
-  Contact, 
-  Footer 
-} from "@/components";
+import {
+  Header,
+  HeroSection,
+  Features,
+  TreatmentJourneyAccordion,
+  StandardOfCare,
+  Contact,
+  Footer,
+  ExpertsSection,
+  RightPeopleComponent,
+  Banner,
+} from "@/app/_components";
 
 export default function Home() {
   return (
     <div className="font-sans min-h-screen flex flex-col">
+      <Banner />
       <Header />
       <main>
         <HeroSection />
         <Features />
         <TreatmentJourneyAccordion />
-        <Testimonials />
-        <Team />
+        <RightPeopleComponent />
+        <ExpertsSection />
         <StandardOfCare />
         <Contact />
       </main>
