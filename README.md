@@ -9,6 +9,7 @@ This is the landing page for Everhope that I recreated as my take home assignmen
 - **Limited to weekend/evening development** due to day job commitments
 - **Prioritized core functionality** over pixel-perfect design details
 - **Focused on responsive behavior** and component reusability
+- There is an issue in the navigation menu, the placement of sub navigation menu. Kept to fix at the end.
 
 ### Design Decisions
 
