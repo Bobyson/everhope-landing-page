@@ -76,7 +76,6 @@ export function TreatmentJourneyAccordion() {
   const [activeStep, setActiveStep] = useState<string | null>(null); // Changed to null initially
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
-  // Function to generate different shades of #F2BBA7 based on index
   const getBackgroundColor = (index: number) => {
     const baseColor = "#F2BBA7";
     const shades = ["#F2BBA7", "#F5C9B9", "#F7D6CA", "#F9E0D7", "#FBEBE5"];
@@ -132,17 +131,17 @@ export function TreatmentJourneyAccordion() {
   ];
 
   return (
-    <section className="w-full py-12 md:py-24 bg-white">
-      <div className="container mx-auto">
-        <div className="text-center  mb-12">
-          <h2 className="text-2xl text-start pl-4 sm:pl-0 sm:text-center md:text-5xl text-gray-900 mb-4">
+    <section className="w-full bg-white">
+      <div className="">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl text-start pl-4 sm:pl-0 sm:text-center text-gray-900 mb-4">
             Diagnosis Through Recovery: <br className="sm:hidden" />
             <span className="text-pink-600">We&apos;re With You</span>
           </h2>
         </div>
 
         {/* Desktop */}
-        <div className="hidden w-full sm:flex md:flex-row min-h-[400px] md:min-h-[400px]">
+        <div className="hidden w-full lg:px-8 sm:flex md:flex-row min-h-[400px]">
           {steps.map((step, index) => (
             <JourneyStep
               key={step.number}

@@ -21,19 +21,21 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 sm:bottom-0 sm:left-10 container mx-auto px-4 md:px-6 flex flex-col gap-6 max-w-7xl">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl  text-white">
-          Redefining <br />
-          <span className="italic">Cancer Care</span>
-        </h1>
-        <p className="text-lg text-white font-semibold">
-          Putting you first, with compassion <br />{" "}
-          <span className="pl-2">and understanding</span>
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-4">
-          <Button className="bg-[#ce0135] hover:bg-[#ce0135] w-[200px] sm:w-auto rounded-full text-white sm:px-4 h-12">
-            Connect with Care Expert
-          </Button>
+      <div className="relative z-10 sm:bottom-0 sm:left-0 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl  text-white">
+            Redefining <br />
+            <span className="italic">Cancer Care</span>
+          </h1>
+          <p className="text-lg text-white font-semibold">
+            Putting you first, with compassion <br />{" "}
+            <span className="pl-2">and understanding</span>
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button className="bg-[#ce0135] hover:bg-[#ce0135] w-[200px] sm:w-auto rounded-full text-white sm:px-4 h-12">
+              Connect with Care Expert
+            </Button>
+          </div>
         </div>
       </div>
     </section>
