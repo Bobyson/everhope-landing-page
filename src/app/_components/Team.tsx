@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export type Doctor = {
   name: string;
@@ -15,13 +15,28 @@ export type Doctor = {
 
 export type DoctorCardProps = {
   doctor: Doctor;
+  className?: string;
 };
 
 export const ExpertsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const doctorsPerPage = 3;
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
-  // Function to get 3 doctors starting from any index with wrapping
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize(); // Set initial width
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getDoctorsPerPage = () => {
+    if (windowWidth >= 1024) return 3; // lg screens
+    if (windowWidth >= 640) return 2; // sm screens
+    return 1; // mobile
+  };
+
+  const doctorsPerPage = getDoctorsPerPage();
+
   const getCurrentDoctors = () => {
     const doctors = [];
     for (let i = 0; i < doctorsPerPage; i++) {
@@ -30,6 +45,8 @@ export const ExpertsSection: React.FC = () => {
     }
     return doctors;
   };
+
+  // const visibleDoctors = doctorsData.slice(currentIndex, currentIndex + 3);
 
   // Navigation handlers with infinite loop
   const goToPrevious = () => {
@@ -43,83 +60,82 @@ export const ExpertsSection: React.FC = () => {
   const currentDoctors = getCurrentDoctors();
 
   return (
-    <section className="bg-[#FBF3ED] py-10 px-4 relative">
+    <section className="bg-[#FBF3ED] py-10 md:py-16 relative">
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
-      <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-semibold sm:mt-8 mb-8">
-        Meet the Experts <br className="sm:hidden" />{" "}
-        <span className="text-red-600 pb-4 sm:pb-0">Behind Your Care</span>
-      </h2>
+      <div className="container mx-auto px-4 sm:px-6">
+        <h2 className="text-center text-3xl lg:text-4xl font-semibold sm:mt-8 mb-8">
+          Meet the Experts <br className="sm:hidden" />{" "}
+          <span className="text-red-600 pb-4 sm:pb-0">Behind Your Care</span>
+        </h2>
 
-      {/* Doctors Grid desktop*/}
-      <div className="hidden sm:grid sm:grid-cols-3 gap-4 max-w-5xl mx-auto">
-        {currentDoctors.map((doctor: Doctor, index: number) => (
-          <DoctorCard key={`${currentIndex}-${index}`} doctor={doctor} />
-        ))}
-      </div>
-      {/* Mobile */}
-      <div className="sm:hidden flex gap-2 overflow-x-auto">
-        {currentDoctors.map((doctor: Doctor, index: number) => (
-          <DoctorCard key={`${currentIndex}-${index}`} doctor={doctor} />
-        ))}
-      </div>
-
-      {/* Pagination Controls - Always enabled */}
-      <div className="flex justify-center items-center space-x-6 mt-8 mb-6">
-        <button
-          onClick={goToPrevious}
-          className="p-3  text-gray-600 hover:bg-gray-600 hover:text-white transition-all"
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
+        <div className="flex gap-3 hide-scrollbar justify-center pt-5 overflow-x-auto">
+          {currentDoctors.map((doctor: Doctor, index: number) => (
+            <DoctorCard
+              key={`${currentIndex}-${index}`}
+              doctor={doctor}
+              className="w-[300px] sm:w-[320px]  flex-shrink-0"
             />
-          </svg>
-        </button>
+          ))}
+        </div>
 
-        <button
-          onClick={goToNext}
-          className="p-3   text-gray-600 hover:bg-gray-600 hover:text-white transition-all"
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {/* Pagination Controls - Always enabled */}
+        <div className="flex justify-center items-center space-x-6 mt-8 mb-6">
+          <button
+            onClick={goToPrevious}
+            className="p-3  text-gray-600 hover:bg-gray-600 hover:text-white transition-all"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-      </div>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
 
-      {/* Action Buttons */}
-      <div className="flex justify-center space-x-4 mt-8">
-        <button className="bg-[#0A2C2D] text-white py-2 px-6 rounded-full hover:bg-teal-800 transition">
-          View All Doctors
-        </button>
-        <button className="bg-red-600 text-white py-2 px-6 rounded-full hover:bg-red-700 transition">
-          Book an Appointment
-        </button>
+          <button
+            onClick={goToNext}
+            className="p-3   text-gray-600 hover:bg-gray-600 hover:text-white transition-all"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex justify-center space-x-4 mt-8">
+          <button className="bg-[#0A2C2D] text-white py-2 px-6 rounded-full hover:bg-teal-800 transition">
+            View All Doctors
+          </button>
+          <button className="bg-red-600 text-white py-2 px-6 rounded-full hover:bg-red-700 transition">
+            Book an Appointment
+          </button>
+        </div>
       </div>
     </section>
   );
 };
 
-const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
+const DoctorCard: React.FC<DoctorCardProps> = ({ doctor, className = "" }) => {
   return (
-    <div className="bg-white rounded-lg flex-shrink-0 w-[280px] sm:w-[320px] shadow-md p-4 mx-auto">
+    <div className={`bg-white rounded-lg shadow-md p-4 ${className}`}>
       {/* Header with image and basic info */}
       <div className="flex gap-3 items-start mb-4">
         <div className="flex-shrink-0">
@@ -136,18 +152,18 @@ const DoctorCard: React.FC<DoctorCardProps> = ({ doctor }) => {
         </div>
 
         <div className="flex-1 min-w-0">
-          {" "}
-          {/* min-w-0 prevents text overflow */}
-          <h3 className="text-sm font-bold text-red-600 leading-tight">
+          <h3 className="text-md font-bold text-red-600 leading-tight">
             {doctor.name}
           </h3>
-          <p className="text-xs text-gray-700 mt-1 leading-tight">
-            {doctor.qualification}
-          </p>
-          <p className="text-xs text-gray-600 mt-1">
-            <span className="font-semibold">Experience:</span>{" "}
-            {doctor.experience}
-          </p>
+          <div className="space-y-1">
+            <p className="text-xs text-gray-700 line-clamp-2 break-words">
+              {doctor.qualification}
+            </p>
+            <p className="text-xs text-gray-600">
+              <span className="font-semibold">Experience:</span>{" "}
+              {doctor.experience}
+            </p>
+          </div>
         </div>
       </div>
 
