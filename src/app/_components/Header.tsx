@@ -2,16 +2,25 @@
 
 import Link from "next/link";
 import Image from "next/image"; //
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../../components/ui/navigation-menu";
-import { useState } from "react";
+// import {
+//   NavigationMenu,
+//   NavigationMenuContent,
+//   NavigationMenuItem,
+//   NavigationMenuLink,
+//   NavigationMenuList,
+//   NavigationMenuTrigger,
+// } from "../../components/ui/navigation-menu";
 // import { useState } from "react";
+// import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
+import { useState } from "react";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,147 +44,217 @@ export function Header() {
   };
   return (
     <>
-      <header className="w-full py-4 px-6 md:px-12 lg:px-24 flex items-center justify-between">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/footer-logo.png"
-              alt="Everhope Logo"
-              width={180}
-              height={40}
-              priority
-            />
-          </Link>
-        </div>
+      <header className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="flex w-full items-center justify-between">
+          <div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/footer-logo.png"
+                alt="Everhope Logo"
+                width={180}
+                height={40}
+                priority
+              />
+            </Link>
+          </div>
 
-        {/* Desktop nav menu */}
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
-            {/* Our Doctors */}
-            <NavigationMenuItem>
-              <Link href="/resources" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+          {/* Desktop nav menu */}
+          {/* <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link href="/resources" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    Our Doctors
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Our Centers</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 w-[200px]">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Sector 65 Gurgram Center</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Sector 12 Gurugram Center</Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Cancer Types</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 grid-cols-2 w-[350px]">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Breast Cancer</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Cervical Cancer</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Head and Neck Cancer</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Prostrate Cancer</Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Lung Cancer</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Colorectal Cancer</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Ovarian Cancer</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Ovarian Cancer</Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-4 w-[200px]">
+                    <li className="">
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Chemotherapy</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Immunotherapy</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Targeted Therapy</Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="#">Hormonal Therapy</Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link href="/about" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    About Us
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link href="/resources" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    Blogs
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu> */}
+
+          <div className="hidden sm:flex">
+            <Menubar className="border-none shadow-none">
+              <MenubarMenu>
+                <MenubarTrigger className="text-lg text-gray-600">
                   Our Doctors
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
+                </MenubarTrigger>
+              </MenubarMenu>
+              <MenubarMenu>
+                <MenubarTrigger className="text-lg text-gray-600">
+                  Our Centers
+                </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>Sector 65 Gurugram Center</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Sector 12 Gurugram Center</MenubarItem>
+                  <MenubarSeparator />
+                </MenubarContent>
+              </MenubarMenu>
 
-            {/* Our Centers */}
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Our Centers</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 w-[200px]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Sector 65 Gurgram Center</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Sector 12 Gurugram Center</Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            {/* Cancer types */}
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Cancer Types</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 grid-cols-2 w-[350px]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Breast Cancer</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Cervical Cancer</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Head and Neck Cancer</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Prostrate Cancer</Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Lung Cancer</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Colorectal Cancer</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Ovarian Cancer</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Ovarian Cancer</Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            {/* Services */}
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 w-[200px]">
-                  <li className="">
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Chemotherapy</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Immunotherapy</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Targeted Therapy</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="#">Hormonal Therapy</Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            {/* About us */}
-            <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+              <MenubarMenu>
+                <MenubarTrigger className="text-lg text-gray-600">
+                  Cancer Types
+                </MenubarTrigger>
+                <MenubarContent>
+                  <div className="grid grid-cols-2 gap-2">
+                    <MenubarItem className="px-2">Breast Cancer</MenubarItem>
+                    <MenubarItem className="px-2">Cervical Cancer</MenubarItem>
+                    <MenubarItem className="px-2">
+                      Head and Neck Cancer
+                    </MenubarItem>
+                    <MenubarItem className="px-2">Prostrate Cancer</MenubarItem>
+                    <MenubarItem className="px-2">
+                      Colorectal Cancer
+                    </MenubarItem>
+                    <MenubarItem className="px-2">Ovarian Cancer</MenubarItem>
+                    <MenubarItem className=" px-2">Stomach Cancer</MenubarItem>
+                    <MenubarItem className=" px-2">Lung Cancer</MenubarItem>
+                  </div>
+                </MenubarContent>
+              </MenubarMenu>
+              <MenubarMenu>
+                <MenubarTrigger className="text-lg text-gray-600">
+                  Services
+                </MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>Chemotheraphy</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Immunotheraphy</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Targeted Theraphy</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Hormonal Theraphy</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+              <MenubarMenu>
+                <MenubarTrigger className="text-lg text-gray-600">
                   About Us
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            {/* Blogs */}
-            <NavigationMenuItem>
-              <Link href="/resources" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                </MenubarTrigger>
+              </MenubarMenu>
+              <MenubarMenu>
+                <MenubarTrigger className="text-lg text-gray-600">
                   Blogs
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+                </MenubarTrigger>
+              </MenubarMenu>
+            </Menubar>
+          </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center z-50"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-              isMobileMenuOpen ? "rotate-45 translate-y-0" : "-translate-y-1.5"
-            }`}
-          />
-          <span
-            className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-              isMobileMenuOpen ? "opacity-0" : "opacity-100"
-            }`}
-          />
-          <span
-            className={`w-6 h-0.5 bg-black transition-all duration-300 ${
-              isMobileMenuOpen ? "-rotate-45 -translate-y-1" : "translate-y-1.5"
-            }`}
-          />
-        </button>
+          {/* Mobile Hamburger Button */}
+          <button
+            className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center z-50"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+                isMobileMenuOpen
+                  ? "rotate-45 translate-y-0"
+                  : "-translate-y-1.5"
+              }`}
+            />
+            <span
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+                isMobileMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+                isMobileMenuOpen
+                  ? "-rotate-45 -translate-y-1"
+                  : "translate-y-1.5"
+              }`}
+            />
+          </button>
+        </div>
       </header>
 
       {/* Mobile Dropdown Menu */}
