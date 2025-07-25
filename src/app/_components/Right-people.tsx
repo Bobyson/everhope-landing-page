@@ -31,7 +31,7 @@ export const RightPeopleComponent: React.FC<RightPeopleComponentProps> = ({
   const [activeTab, setActiveTab] = useState<string>("patients");
 
   return (
-    <section className={`bg-white py-16 px-4 ${className}`}>
+    <section className={`bg-white py-10 px-4 ${className}`}>
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Side - Image/Visual */}
@@ -46,8 +46,8 @@ export const RightPeopleComponent: React.FC<RightPeopleComponentProps> = ({
           </div>
 
           {/* Right Side - Content */}
-          <div className="">
-            <h2 className="text-2xl text-center sm:text-start sm:text-3xl lg:text-4xl font-light text-gray-700 mb-8">
+          <div className="pl-0 sm:pl-20">
+            <h2 className="text-3xl lg:text-4xl text-center sm:text-start font-light text-gray-700 mb-8">
               Having the{" "}
               <span className="text-[#E91E63] font-medium">Right People</span>
               <br />
