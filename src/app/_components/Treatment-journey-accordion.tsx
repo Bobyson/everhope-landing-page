@@ -59,7 +59,13 @@ function JourneyStep({
         <div className={`transition-all duration-300 ease-in-out`}>
           {icon && (
             <div className={`flex mt-2 ${isActive ? "hidden" : "block"}`}>
-              <Image src={icon} alt={title} width={40} height={40} />
+              <Image
+                src={icon}
+                alt={title}
+                width={40}
+                height={40}
+                className="h-15 w-15"
+              />
             </div>
           )}
           <h3 className={`text-2xl text-gray-600`}>{title}</h3>
@@ -98,35 +104,35 @@ export function TreatmentJourneyAccordion() {
       title: "Your First Consultation",
       description:
         "Meet our experts to review your diagnosis and medical history, discuss treatment goals, get your questions answered, and understand the path forward.",
-      icon: "/care-icon.svg",
+      icon: "/consultation.png",
     },
     {
       number: "2",
       title: "Your Personalised Care Plan",
       description:
         "Our team develops a comprehensive treatment plan tailored specifically to your diagnosis, health status, and personal preferences.",
-      icon: "/file.svg",
+      icon: "/plan.svg",
     },
     {
       number: "3",
       title: "Treatment at our Center",
       description:
         "Experience state-of-the-art treatment delivered by our expert team in a healing environment designed for your comfort and well-being.",
-      icon: "/treatment-icon.svg",
+      icon: "/treatment.svg",
     },
     {
       number: "4",
       title: "Comfort-first Experience",
       description:
         "From amenities to support services, every aspect of your care is designed to make your treatment journey as comfortable as possible.",
-      icon: "/support-icon.svg",
+      icon: "/comfort.svg",
     },
     {
       number: "5",
       title: "Caring for the Whole You",
       description:
         "Our holistic approach addresses not just your cancer, but your overall wellbeing with nutrition guidance, emotional support, and survivorship planning.",
-      icon: "/globe.svg",
+      icon: "/rev_icon5.svg",
     },
   ];
 

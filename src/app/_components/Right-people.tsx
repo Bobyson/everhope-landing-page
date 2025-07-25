@@ -100,11 +100,16 @@ export const RightPeopleComponent: React.FC<RightPeopleComponentProps> = ({
 const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
   return (
     <div className="space-x-4 p-4 transition-shadow duration-300">
-      <div className="flex sm:items-start justify-center items-center flex-col sm:justify-start sm:flex-row gap-4">
-        <span className="text-white bg-[#E91E63] p-2 rounded-full text-xl">
-          {item.icon}
-        </span>
-        <p className="text-gray-600 text-sm leading-relaxed">
+      <div className="flex justify-center items-center flex-col sm:justify-start sm:flex-row gap-4">
+        <Image
+          src={item.icon}
+          alt={item.icon}
+          height={40}
+          width={40}
+          className="text-white h-15 w-15 p-2 rounded-full text-xl"
+        />
+
+        <p className="text-gray-600 text-center sm:text-start leading-relaxed">
           {item.description}
         </p>
       </div>
@@ -121,20 +126,20 @@ const tabsData: TabContent[] = [
     image: "/Patients.png",
     items: [
       {
-        icon: "🏠",
+        icon: "/house.svg",
         description: "Individual patient suites that offer privacy and peace",
       },
       {
-        icon: "🤝",
+        icon: "/managersupport.svg",
         description:
           "A dedicated Care Manager for support through every step in your treatment",
       },
       {
-        icon: "🚗",
+        icon: "/car.svg",
         description: "Convenient home pick-up and drop-off and valet services",
       },
       {
-        icon: "💬",
+        icon: "/msg.svg",
         description:
           "Clear, transparent communication so you always know what to expect",
       },
@@ -148,21 +153,21 @@ const tabsData: TabContent[] = [
     image: "/caregiver.png",
     items: [
       {
-        icon: "🛋️",
+        icon: "/sleeing.svg",
         description:
           "Comfortable spaces to rest, recharge, or focus when you need it",
       },
       {
-        icon: "📶",
+        icon: "/computer.svg",
         description:
           "Reliable Wi-Fi and workspaces — so your life doesn't have to be on hold",
       },
       {
-        icon: "📋",
+        icon: "/tick.svg",
         description: "Regular updates so you don't have to chase information",
       },
       {
-        icon: "📚",
+        icon: "/calender.svg",
         description:
           "Resources and guidance to help you support your loved one effectively",
       },
