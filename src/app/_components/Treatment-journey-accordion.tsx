@@ -137,9 +137,9 @@ export function TreatmentJourneyAccordion() {
   ];
 
   return (
-    <section className="w-full bg-white">
+    <section className="container mx-auto bg-white">
       <div className="">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+        <div className=" px-4 sm:px-6 lg:px-8 text-center mb-12">
           <h2 className="text-3xl lg:text-4xl text-start pl-4 sm:pl-0 sm:text-center text-gray-900 mb-4">
             Diagnosis Through Recovery: <br className="sm:hidden" />
             <span className="text-pink-600">We&apos;re With You</span>

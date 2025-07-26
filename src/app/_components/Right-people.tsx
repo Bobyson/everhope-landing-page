@@ -31,7 +31,7 @@ export const RightPeopleComponent: React.FC<RightPeopleComponentProps> = ({
   const [activeTab, setActiveTab] = useState<string>("patients");
 
   return (
-    <section className={`bg-white py-10 px-4 ${className}`}>
+    <section className={`bg-white container mx-auto py-10 px-4 ${className}`}>
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Side - Image/Visual */}

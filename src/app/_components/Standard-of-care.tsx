@@ -2,29 +2,11 @@
 
 import ResponsiveCarousel from "./Carousel";
 
-// interface CardData {
-//   id: number;
-//   title: string;
-//   subtitle: string;
-//   description: string;
-//   image: string;
-//   badge?: string;
-// }
-
-// interface CarouselProps {
-
-//   autoSlideInterval?: number;
-// }
-
-// interface CarouselCardProps {
-//   card: CardData;
-//   className?: string;
-// }
-
 export function StandardOfCare() {
   return (
-    <div className="bg-[#FBF3ED] py-12">
-      <div className=" container mx-auto py-10 sm:py-20">
+    <div className=" bg-[#FBF3ED] py-12">
+      {/* <div className="container mx-auto"> */}
+      <div className="  py-10 sm:py-20">
         <div className="flex flex-col space-y-4 items-center justify-center">
           <h2 className="text-3xl lg:text-4xl text-center text-gray-600">
             The <span className="text-[#D0093B]">Everhope</span> Standard
@@ -35,6 +17,7 @@ export function StandardOfCare() {
         </div>
       </div>
       <ResponsiveCarousel />
+      {/* </div> */}
     </div>
   );
 }
